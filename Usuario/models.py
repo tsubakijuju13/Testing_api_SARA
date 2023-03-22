@@ -1,12 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
-#Validadores:
-def validate_gender(value):
-    gender = value.lower()
-    if gender != "mujer" and gender != "hombre":
-        raise ValidationError({"message: ": "Solo genero tradicionales"})
-
 #Modelo del Usuario
 class User(models.Model):
     code = models.IntegerField(primary_key=True)
@@ -16,12 +10,6 @@ class User(models.Model):
     email = models.EmailField(blank=False)
     cellphone = models.CharField(max_length=10, default='0000000000')
     address = models.CharField(max_length=50, blank=False)
-    residence = models.CharField(max_length=50, blank=True, default='')
-    marital_status = models.CharField(max_length=30, blank=False)
-    date_birth = models.DateField(blank=False)
-    gender = models.CharField(max_length=10, validators=[validate_gender], blank=False)
-    neighborhood = models.CharField(max_length=50, blank=True, default='')
-    social_status = models.IntegerField(blank=False)
 
     class Meta:
         db_table = "User"
