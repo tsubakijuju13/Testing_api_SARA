@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-1-1o3p9dad_s4gslyez(sgr*5&jy$(@@(6xed1+x_s9k9b&@_)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['xd.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -109,10 +110,11 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='postgres://sara_mxi3_user:eyQRqOV7YtKtCMVmhJeXGqaIPAxc3HBk@dpg-cge64fg2qv2bbhnem2e0-a.oregon-postgres.render.com/sara_mxi3',
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 
