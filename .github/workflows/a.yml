@@ -68,11 +68,6 @@ jobs:
         with:
           name: python-app
           path: .
-
-      - name: Login via Az module
-        uses: azure/login@v1
-        with:
-          creds: ${{secrets.AZURE_CREDENTIALS}}
 #ca
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
